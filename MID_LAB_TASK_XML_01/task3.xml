@@ -1,0 +1,29 @@
+<address>
+	<serial sr="1">
+		<id>1</id>
+		<name>John Doe</name>
+		<address>H#38, R#3,Banani,Dhaka</address>
+        <dept>Sales</dept>
+		<sales>$20000</sales>
+		
+	</serial>
+
+    <serial sr="2">
+		<id>2</id>
+		<name>Mark Zukerberg</name>
+		<address>Flat#A/1, H#10,R#18,Mirpur,Dhaka</address>
+        <dept>Accounts</dept>
+		<sales>$12000</sales>
+		
+	</serial>
+
+    <serial sr="3">
+		<id>3</id>
+		<name>Ala Voski</name>
+		<address>H#38, R#3,Motijheel</address>
+        <dept>Human Resource</dept>
+		<sales>$30000</sales>
+		
+	</serial>
+	
+</address>
