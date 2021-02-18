@@ -23,8 +23,8 @@
 <body>
 	<form method="post" action="#">
 		<fieldset>
-			<legend>Name</legend>
-			<input type="text" name="myname" value=""> <br>
+		    <input type="text" name="myname" value=""> 
+			<hr>
 			<input type="submit" name="submit" value="Submit">
 		</fieldset>
 	</form>
