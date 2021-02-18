@@ -10,7 +10,7 @@
 		if($name == ""){
 			echo "null submission";
 		}else{
-			echo "successful";
+			echo $name;
 		}
 
 	}else{
