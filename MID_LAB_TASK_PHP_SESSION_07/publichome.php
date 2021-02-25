@@ -2,24 +2,23 @@
 <html>
 <head>
     <meta>
-    <title>XCompany - Home</title>
+    <title>Home-Page</title>
 </head>
 <centre>
 <body>   
         
-        <table cellspacing="0" border="1" width="820px" align=center>
+        <table cellspacing="0" border="1" width="100%">
             
-            <tr height="51px">
-                
-                <td width=210px>
-                    
-                    <a href="public_home.php"><img src="logo.png" alt="Logo"></a>                      
-                    
-                </td>
+            <tr>
                 
                 <td align="right">
                     
-                <pre>    <a href="public_home.php">Home</a>|<a href="login.php">Login</a>|<a href="registration.php">Registration</a>   </pre>
+                    <a href="#"><img src="logo.png" alt="Logo" align="left"></a>     
+                    <a href="#"> Home </a> 
+				    &nbsp | &nbsp
+				    <a href="login.php"> Login </a>
+				    &nbsp | &nbsp
+				   <a href="registration.php"> Registration </a>                 
                     
                 </td>
        
@@ -27,7 +26,7 @@
             
             <tr>
                 
-                <td colspan="2" height=180px><h2>Welcome to xCompany</h2></td>
+                <td colspan="2" height=150px><h2>Welcome to xCompany</h2></td>
                 
             </tr>
             
