@@ -26,7 +26,7 @@
             <legend>
                 <b>REGISTRATION</b>
             </legend>
-            <form action='./checkreg.php' method='POST' >
+            <form action='./checkregistration.php' method='POST' >
                 <table align=""> 
                     <tr>
                         <td>
