@@ -1,7 +1,14 @@
+<?php
+    session_start();
+    if(isset($_SESSION['flag']))
+    {
+        header('location: login.php');
+    }
+?>
 
 <!DOCTYPE html>
-<html lang="en">
 <head>
+    
     <title>Registration</title>
 </head>
 <body>
@@ -10,7 +17,7 @@
             <tr>
                 <td>
                     <img src='./images/logo.png' alt="logo" height='50px'/>
-                </td> 
+                </td>
                 <td align='right'>
                     <nav>
                         <a href='./home.php'>Home</a> |
@@ -21,13 +28,14 @@
             </tr>
         </table>
     </fieldset>
+
     <fieldset>
         <fieldset>
             <legend>
                 <b>REGISTRATION</b>
             </legend>
             <form action='./checkregistration.php' method='POST' >
-                <table align=""> 
+                <table align="">
                     <tr>
                         <td>
                             Name:
@@ -137,12 +145,3 @@
     </fieldset>
 </body>
 </html>
-
-<?php
-    session_start();
-    if(isset($_SESSION['flag']))
-    {
-        header('location: dashboard.php');
-    }
-    
-?>
