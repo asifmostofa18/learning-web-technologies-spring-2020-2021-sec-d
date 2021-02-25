@@ -1,168 +1,151 @@
+<?php
+	
+	session_start();
+
+	if(isset($_POST['Submit']))
+	{
+		$flag = true;
+
+		if($_POST["Name"] === "")
+		{
+			echo "Name field is empty! \r\n";
+			$flag = false;
+		}
+		elseif($_POST['Email'] === "")
+		{
+			echo "Email field is empty! \r\n";
+			$flag = false;
+		}
+		elseif($_POST['UserName'] === "")
+		{
+			echo "UserName field is empty! \r\n";
+			$flag = false;
+		}
+		elseif(strlen($_POST['UserName'])<2)
+		{
+			echo "User Name must contain at least two (2) characters \r\n";
+			$flag = false;
+		}
+		elseif(strlen($_POST['Password'])<8)
+		{
+			echo "Password must not be less than eight (8) characters \r\n";
+			$flag = false;
+		}
+		elseif($_POST['Password'] !== $_POST['cPassword'])
+		{
+			echo "Password and Confirm Password do not match! \r\n";
+			$flag = false;
+		}
+		else
+		{
+
+			$flag = false;
+			for ($i=0; $i < strlen($_POST['Password']); $i++) { 
+				if($_POST['Password'][$i] === '@' || $_POST['Password'][$i] === '#' || $_POST['Password'][$i] === '$' || $_POST['Password'][$i] === '%')
+				{
+					$flag = true;
+					break;
+				}
+			}
+
+			if($flag === false)
+			{
+				echo "Please insert (@/#/$/%) special charecter in Password field \r\n";
+				$flag = false;
+			}
+		}
+
+		if($flag === true)
+		{
+			$_SESSION['userName'] = $_POST['UserName'];
+			$_SESSION['password'] = $_POST['Password'];
+			$_SESSION['email'] = $_POST['Email'];
+			header('location: login.php');
+		}
+	} 
+?>
 
 <!DOCTYPE html>
 <html>
-
 <head>
-    <meta>
-    <title>XCompany - Registration</title>
+	<title>Registration</title>
 </head>
-
 <body>
+	<table border="1" width="100%" cellspacing="0">
+		<tr>
+			<td align="right">
+				<a href="publichome.html"> <img src="logo.png" align="left"> </a> 
+				<a href="publichome.html"> Home </a> 
+				&nbsp | &nbsp
+				<a href="login.php"> Login </a>
+				&nbsp | &nbsp
+				<a href="registration.php"> Registration </a>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<br>
+				<form method="POST" action="">
+				<fieldset>
+					<legend> <b>REGISTRATION</b></legend>
+						<table>
+							<tr>
+								<td> Name </td>
+								<td> :<input type="text" name="Name"/> 
+								<br/> </td>
+							</tr>
+							<tr> <td colspan="2"> <hr> </td> </tr>
+							<tr>
+								<td> Email </td>
+								<td> :<input type="email" name="Email"/> 
+								<br/> </td>
+							</tr>
+							<tr> <td colspan="2"> <hr> </td> </tr>
+							<tr>
+								<td> User Name </td>
+								<td> :<input type="username" name="UserName"/> 
+								<br/> </td>
+							</tr>
+							<tr> <td colspan="2"> <hr> </td> </tr>
+							<tr>
+								<td> Password </td>
+								<td> :<input type="password" name="Password"/> 
+								<br/> </td>
+							</tr>
+							<tr> <td colspan="2"> <hr> </td> </tr>
+							<tr>
+								<td> Confirm Password </td>
+								<td> :<input type="password" name="cPassword"/> 
+								<br/> </td>
+							</tr>
+							<tr> <td colspan="2"> <hr> </td> </tr>
+					</table>
+						<fieldset>
+							<legend>Gender</legend>
+							    <input type='radio' name='gender' value='Male'>Male
+		            			<input type='radio' name='gender' value='Female'>Female
+		            			<input type='radio' name='gender' value='Others'>Others
+						</fieldset>
 
-<table cellspacing="0" border="1" width="820px" align=center>
-            
-            <tr>
-                
-                <td width=110px>
-                    
-                    <a href="publichome.php"><img src="logo.png" alt="Logo"></a>                      
-                    
-                </td>
-                
-                <td align="right">
-                    
-                <pre>    <a href="publichome.php">Home</a>|<a href="login.php">Login</a>|<a href="registration.php">Registration</a>   </pre>
-                    
-                </td>
-       
-            </tr>
-
-        <tr>
-
-            <td colspan="2" height="500px" align="center" >
-                
-                <form action="registration.php" method="post">
-
-                    <fieldset align="left">
-
-                        <legend><b>REGISTRATION</b></legend>
-
-                        <br>
-
-                        <b>Name</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:<input type="text" name="name">
-                        <hr>
-                        <b>Email</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:<input type="email" name="email">
-                        <button title="hint:Sample@example.com"><b>i</b></button>
-                        <hr>
-                        <b>User Name</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:<input type="text" name="uname">
-                        <hr>
-                        <b>Password</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:<input type="password" name="password">
-                        <hr>
-                        <b>Confirm Password</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:<input type="password" name="cpassword">
-                        <hr>
-
-                        <fieldset align="left">
-
-                            <legend ><b>Gender</b></legend>
-
-                            <input type="radio" name="gender" value="Male"> <b>Male</b>
-                            <input type="radio" name="gender" value="Female"> <b>Female</b>
-                            <input type="radio" name="gender" value="Other"> <b>Other</b>
-
-                        </fieldset>
-                        <hr>
-
-                        <fieldset align="left">
-
-                            <legend><b>Date of Birth</b></legend>
-
-                            <input type="tel" name="day" size="1" pattern="[0-9]{2}"><b> /</b>
-                            <input type="tel" name="month" size="1" pattern="[0-9]{2}"><b> /</b>
-                            <input type="tel" name="year" size="2" pattern="[0-9]{4}"> (dd/mm/yyyy)
-
-                        </fieldset>
-                        <hr>
-
-                        <input type="submit" name="submit" value="Submit">
-                        <input type="reset" name="reset" value="Reset">
-
-                    </fieldset>
-
-                </form>
-
-            </td>
-
-        </tr>
-
-        <tr>
-
-            <td colspan="2" align="center">
-                <p>Copyright &#169; 2017</p>
-            </td>
-
-        </tr>
-
-    </table>
-
+						<fieldset>
+							<legend>Date of Birth</legend>
+									<input type="number" name="date" min="1" max = "31" size="4"> /
+									<input type="number" name="month" min="1" max = "12" size="4"> /
+									<input type="number" name="year" min="1900" max = "2500" size="4"> <i> (dd/mm/yyyy) </i>
+						</fieldset>
+					<hr>
+					<input type="reset" name="Reset" value="Reset">
+					<input type="submit" name="Submit" value="Submit">
+				</fieldset>
+				</form>
+			<br>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<center> Copyright &copy 2017 </center>
+			</td>
+		</tr>
+	</table>
 </body>
-
 </html>
-
-<?php
-
-if(isset($_REQUEST['submit']))
-{
-    
-    if(!empty($_REQUEST['name']))
-    {   
-    setcookie('name', $_REQUEST['name'], time()+86400);
-    }
-else
-{
-    echo "Please enter name.<br>";
-}
-
-setcookie('email', $_REQUEST['email'], time()+86400);
-
-if(!empty($_REQUEST['uname']))
-{  
-    setcookie('username', $_REQUEST['uname'], time()+86400);
-}
-else
-{
-    echo "Please enter user name.<br>";
-}
-
-if($_REQUEST['password'] == $_REQUEST['cpassword'] and !empty($_REQUEST['password']))
-
-{   
-   setcookie('password', $_REQUEST['password'], time()+86400);   
-}
-
-else
-{
-    echo "Password doesn't match.<br>";
-}
-
-if(!empty($_REQUEST['gender']))
-
-{
-    setcookie('gender', $_REQUEST['gender'], time()+86400);   
-}
-
-else
-{
-    echo "Select gender.<br>";
-}
-
-if(intval($_REQUEST['day'])<32 and $_REQUEST['day'] > 0 and $_REQUEST['month'] < 13 and $_REQUEST['month'] > 0 and $_REQUEST['year'] > 1899 and $_REQUEST['year'] < 2100)
-
-{   
-    $date = $_REQUEST['day']."/".$_REQUEST['month']."/".$_REQUEST['year'];
-    setcookie('date', $date, time()+86400); 
-}
-
-else
-{
-    echo "Invalid date<br>";
-}
-
-if(isset($_COOKIE['name']) and isset($_COOKIE['email']) and isset($_COOKIE['username']) and isset($_COOKIE['password']) and isset($_COOKIE['gender']) and isset($_COOKIE['date']))
-
-{   
-    echo "Registration Complete!<br>";      
-}
-    
-}
-
-?>
