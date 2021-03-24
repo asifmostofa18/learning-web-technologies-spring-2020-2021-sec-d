@@ -1,46 +1,23 @@
 <?php
-    include('../model/data.php');
-    if(empty($_GET['pid']))
-    {
-        echo "Not a valid product";
-        return;
-    }
-    else
-    {
-        $productData = getDataById($_GET['pid']);
-        $productData = mysqli_fetch_assoc($productData);
-    }
+	session_start();
+	require_once('../model/dbConnection.php');
+	require_once('../model/productModel.php');
+	$id = $_GET['id'];
+	$connection = getConnection();
+	$selectedProduct = getProductById($id);
+	$_SESSION['id'] = $id;
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <fieldset>
-        <legend>
-            <b>DELETE PRODUCT</b>
-        </legend>
-            <label>Name: <?php echo $productData['pname']; ?></label><br>
-            <label>Buying Price: <?php echo $productData['bprice']; ?></label><br>
-            <label>Selling Price: <?php echo $productData['sprice']; ?></label><br>
-            <label>Displayable: 
-                <?php 
-                if($productData['display'] == 'y')
-                {
-                    echo 'Yes';
-                }
-                else
-                    echo 'No'; 
-                ?>
-            </label><br>
-        <form action='../controller/validatedelete.php?pid=<?php echo $productData['pid']; ?>' method='POST'?>
-            <input type="submit" value='Delete'>
-        </form>
-    </fieldset>
-</body>
-</html>
+<div id="main_content">
+	<form method="POST" action="../controller/deleteCheck.php">
+		<fieldset style="width: 20%">
+			<legend>DELETE PRODUCT</legend>
+			Name: <?php echo $selectedProduct['name']; ?> <br>
+			Buying Price: <?php echo $selectedProduct['buyingPrice']; ?> <br>
+			Selling Price: <?php echo $selectedProduct['sellingPrice']; ?> <br>
+			Displayable: <?php  if($selectedProduct['displayable'] == 'Yes') { echo "Yes";} else { echo "No";} ?>
+			<hr>
+			<input type="submit" name="delete" value="Delete">
+		</fieldset>
+	</form>
+</div>
