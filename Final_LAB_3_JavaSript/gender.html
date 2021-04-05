@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Gender</title>
+</head>
+<body>
+	<h1 id="head">Gender</h1>
+
+	<form >
+		<fieldset>
+			    <input type="radio" id="male" name="gender" value="Male" onkeyup="GenderValidation()" > Male 
+				<input type="radio" id="female" name="gender" value="Female" onkeyup="GenderValidation()" > Female
+				<input type="radio" id="other" name="gender" value="Other" onkeyup="GenderValidation()" > Other <br><br>
+				
+				<input type="button" name="button" value="Submit" onclick="GenderValidation()">
+		</fieldset>		
+	</form>
+	<script type="text/javascript" src="script.js"></script>
+</body>
+</html>
